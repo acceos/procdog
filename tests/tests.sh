@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Test script. Output of this script can be saved and compared to test for regressions.
 # Double-spacing between commands here makes the script output easier to read.
@@ -67,7 +67,7 @@ sleep 4
 
 # Start and stop a shell script, to test process groups.
 cat > ./sample-script.sh <<EOF
-#!/bin/bash
+#!/usr/bin/env bash
 sleep 200
 EOF
 chmod +x ./sample-script.sh

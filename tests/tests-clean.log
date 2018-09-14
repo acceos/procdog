@@ -3,7 +3,7 @@
 
 # Python version we're using to run tests.
 python -V
-Python 2.7.9
+Python 2.7.15
 
 # Error invocations.
 procdog blah || expect_error
@@ -148,7 +148,7 @@ procdog (_PID_): debug: combined options: Options(command=None, health_command=N
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'stop'
-procdog (_PID_): monitor: process done (code -15), exiting
+procdog (_PID_): monitor: process done (code 0), exiting
 procdog (_PID_): monitor: command 'stop': response 'killed, signal=15'
 procdog (_PID_): debug: client: stop: killed, signal=15
 procdog (_PID_): debug: client: exit code 0 (based on 'killed, signal=15' with strict=False and ensure_healthy=False)
@@ -183,7 +183,7 @@ sleep 4
 
 # Start and stop a shell script, to test process groups.
 cat > ./sample-script.sh <<EOF
-#!/bin/bash
+#!/usr/bin/env bash
 sleep 200
 EOF
 chmod +x ./sample-script.sh
@@ -215,7 +215,7 @@ procdog (_PID_): debug: combined options: Options(command=None, health_command=N
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'stop'
-procdog (_PID_): monitor: process done (code -15), exiting
+procdog (_PID_): monitor: process done (code 0), exiting
 procdog (_PID_): monitor: command 'stop': response 'killed, signal=15'
 procdog (_PID_): debug: client: stop: killed, signal=15
 procdog (_PID_): debug: client: exit code 0 (based on 'killed, signal=15' with strict=False and ensure_healthy=False)
@@ -280,8 +280,8 @@ procdog (_PID_): debug: monitor: received command 'status'
 procdog (_PID_): monitor: command 'status': response 'running, pid=_PID_'
 procdog (_PID_): debug: client: status: running, pid=_PID_
 procdog (_PID_): debug: client: wait: connect success
-procdog (_PID_): debug: client: connected
-procdog (_PID_): debug: monitor: listen accept
+procdog (_PID_): debug: client: connectedprocdog (_PID_): debug: monitor: listen accept
+
 procdog (_PID_): debug: monitor: received command 'status'
 procdog (_PID_): monitor: command 'status': response 'running, pid=_PID_'
 procdog (_PID_): debug: client: status: running, pid=_PID_
@@ -294,7 +294,7 @@ procdog (_PID_): debug: combined options: Options(command=None, health_command=N
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'stop'
-procdog (_PID_): monitor: process done (code -15), exiting
+procdog (_PID_): monitor: process done (code 0), exiting
 procdog (_PID_): monitor: command 'stop': response 'killed, signal=15'
 procdog (_PID_): debug: client: stop: killed, signal=15
 procdog (_PID_): debug: client: exit code 0 (based on 'killed, signal=15' with strict=False and ensure_healthy=False)
@@ -373,9 +373,9 @@ procdog (_PID_): debug: combined options: Options(command=None, health_command=N
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'stop'
-procdog (_PID_): monitor: process done (code -15), exiting
 procdog (_PID_): monitor: command 'stop': response 'killed, signal=15'
 procdog (_PID_): debug: client: stop: killed, signal=15
+procdog (_PID_): monitor: process done (code 0), exiting
 procdog (_PID_): debug: client: exit code 0 (based on 'killed, signal=15' with strict=False and ensure_healthy=False)
 killed, signal=15
 
@@ -413,7 +413,7 @@ procdog (_PID_): debug: combined options: Options(command=None, health_command=N
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'stop'
-procdog (_PID_): monitor: process done (code -15), exiting
+procdog (_PID_): monitor: process done (code 0), exiting
 procdog (_PID_): monitor: command 'stop': response 'killed, signal=15'
 procdog (_PID_): debug: client: stop: killed, signal=15
 procdog (_PID_): debug: client: exit code 0 (based on 'killed, signal=15' with strict=False and ensure_healthy=False)
@@ -454,9 +454,9 @@ procdog (_PID_): debug: monitor: ensure_healthy is set and process is still not 
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'stop'
-procdog (_PID_): monitor: process done (code -15), exiting
 procdog (_PID_): monitor: command 'stop': response 'killed, signal=15'
 procdog (_PID_): debug: client: stop: killed, signal=15
+procdog (_PID_): monitor: process done (code 0), exiting
 procdog (_PID_): debug: client: exit code 6 (based on 'killed, signal=15' with strict=False and ensure_healthy=True)
 killed, signal=15
 (got expected error: status 6)
@@ -531,18 +531,18 @@ procdog (_PID_): debug: client: acquired lock: True: /var/tmp/procdog.err1.lock
 procdog (_PID_): debug: client: wait: checking for connect...
 procdog (_PID_): monitor: starting with Options(command='no-such-command', health_command=None, health_count=5, health_delay=1.0, ensure_healthy=False, dir='/tmp/procdog-tests', stdin=None, stdout=None, stderr=None, append=False, linger=3.0, strict=False, shell=False)
 procdog (_PID_): monitor: listening on /var/tmp/procdog.err1.sock
-procdog (_PID_): monitor: Failed to start: [Errno 2] No such file or directory: 'no-such-command': no-such-command
+procdog (_PID_): monitor: Failed to start: [Errno 2] No such file or directory: no-such-command
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'status'
-procdog (_PID_): debug: client: status: error: Failed to start: [Errno 2] No such file or directory: 'no-such-command': no-such-command
+procdog (_PID_): debug: client: status: error: Failed to start: [Errno 2] No such file or directory: no-such-command
 procdog (_PID_): debug: client: wait: connect success
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'status'
-procdog (_PID_): debug: client: status: error: Failed to start: [Errno 2] No such file or directory: 'no-such-command': no-such-command
-procdog (_PID_): debug: client: exit code 2 (based on 'error: Failed to start: [Errno 2] No such file or directory: 'no-such-command': no-such-command' with strict=False and ensure_healthy=False)
-error: Failed to start: [Errno 2] No such file or directory: 'no-such-command': no-such-command
+procdog (_PID_): debug: client: status: error: Failed to start: [Errno 2] No such file or directory: no-such-command
+procdog (_PID_): debug: client: exit code 2 (based on 'error: Failed to start: [Errno 2] No such file or directory: no-such-command' with strict=False and ensure_healthy=False)
+error: Failed to start: [Errno 2] No such file or directory: no-such-command
 (got expected error: status 2)
 
 procdog start err2 --command "false" || expect_error
@@ -728,8 +728,8 @@ procdog (_PID_): debug: combined options: Options(command='sleep 100', health_co
 procdog (_PID_): debug: client: connected
 procdog (_PID_): debug: monitor: listen accept
 procdog (_PID_): debug: monitor: received command 'stop'
-procdog (_PID_): monitor: process done (code -15), exiting
 procdog (_PID_): monitor: command 'stop': response 'killed, signal=15'
+procdog (_PID_): monitor: process done (code 0), exiting
 procdog (_PID_): debug: client: stop: killed, signal=15
 procdog (_PID_): debug: client: exit code 0 (based on 'killed, signal=15' with strict=True and ensure_healthy=True)
 killed, signal=15

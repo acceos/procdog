@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Primitive but effective test harness for running command-line regression tests.
 
